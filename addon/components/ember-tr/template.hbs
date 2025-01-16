@@ -1,3 +1,6 @@
+{{#if this.isChildRow}}
+  <span class="et-toggle-collapse {{if this.rowMeta.isExpanded 'et-expanded'}}" {{action 'toggleCollapse'}}></span>
+{{/if}}
 {{#each this.cells as |api|}}
   {{#if (has-block)}}
     {{#if this.isHeader}}

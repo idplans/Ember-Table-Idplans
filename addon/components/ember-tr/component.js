@@ -47,7 +47,7 @@ import { SELECT_MODE } from '../../-private/collapse-tree';
 export default Component.extend({
   layout,
   tagName: 'tr',
-  classNames: ['et-tr'],
+  classNameBindings: ['isSelected', 'isGroupSelected', 'isSelectable', 'isChildRow:et-child-row'],
   classNameBindings: ['isSelected', 'isGroupSelected', 'isSelectable'],
 
   /**
@@ -86,6 +86,10 @@ export default Component.extend({
 
   isSelected: readOnly('rowMeta.isSelected'),
 
+  isChildRow: computed('rowMeta.depth', function() {
+    return this.get('rowMeta.depth') > 0;
+  }),
+
   isGroupSelected: readOnly('rowMeta.isGroupSelected'),
 
   isSelectable: computed('rowSelectionMode', function() {
@@ -108,7 +112,6 @@ export default Component.extend({
         rowMeta.select({ toggle, range });
       } else if (rowMeta && rowSelectionMode === SELECT_MODE.SINGLE) {
         rowMeta.select({ single: true });
-      }
     }
 
     this.sendEventAction('onClick', event);

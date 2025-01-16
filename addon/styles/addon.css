@@ -149,8 +149,28 @@
 @media speech {
   .ember-table .et-speech-only {
     display: block !important;
-  }
 }
+.ember-table tr.et-child-row {
+  background-color: #f5f5f5;
+}
+
+.ember-table tr.et-child-row > td {
+  padding-left: 20px;
+}
+
+.ember-table .et-toggle-collapse {
+  cursor: pointer;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  transition: transform 0.2s ease;
+}
+
+.ember-table .et-toggle-collapse.et-expanded {
+  transform: rotate(90deg);
+}
+
 
 .ember-table .ember-table-loading-more {
   display: inline-block;
